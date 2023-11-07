@@ -21,11 +21,12 @@ int main(void)
     int size = 0, max = 0,num = 0;
     for(int i = 0;i < n;i++){
         for(int j = 0;j < m;j++){
-            if(vis[i][j] == 1 || board[i][j] == 0) continue;
+            if(vis[i][j] == 1 || board[i][j] == 0) continue; // continue 는 해당 반복을 넘김 
             // 배열을 돌면서 방문하지 않고 1로 적힌 곳을 방문한다 
             vis[i][j] = 1;
             Q.push({i,j});num++;
             size = 0;
+            // 큐를 돈다는 것은 탐색할 영역이 남았다는 의미이다 
             while(!Q.empty())
             {
                 pair<int, int> cur = Q.front(); Q.pop();size++;
