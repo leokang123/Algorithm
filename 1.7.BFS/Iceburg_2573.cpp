@@ -23,7 +23,7 @@ int main(void){
         }
     }
     int first_num; 
-    int count = 0; // BFS순회하면서 찾은 대류그기 
+    int count = 0; // BFS순회하면서 찾은 대류크기 
     int total = 0;
     while(count != -1){
         if(num == 0) break;

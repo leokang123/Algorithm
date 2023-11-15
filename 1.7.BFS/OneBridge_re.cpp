@@ -17,6 +17,7 @@ int main(void){
     cin.tie(nullptr);
     int num;cin >> num;
     queue<tuple<int,int,int>> Q;
+    queue<tuple<int,int,int>> Q2;
     for(int i = 0;i <num; i++){
         for(int j = 0;j <num;j++){
             cin>> board[i][j];
@@ -31,6 +32,8 @@ int main(void){
             continent[i][j] = continum;
             Q.push({i,j,continum});
             while(!Q.empty()){
+                Q2.push(Q.front()); // 대륙 정보 큐에 전부 저장
+                conNum[continum]++; // 대륙 넘버에 따라 각 대륙 크기 저장 
                 tuple<int,int,int> cur =Q.front();Q.pop();
                 for(int dir = 0; dir < 4;dir++){
                     int nx = X + dx[dir];
@@ -45,60 +48,9 @@ int main(void){
             continum++;
         }
     }
-    // cout << '\n';
-    // for(int i = 0; i< num;i++){
-    //     for(int j = 0 ; j < num ; j++){
-    //         cout << continent[i][j] <<' ';
-    //     }
-    //     cout << '\n';
-    // }
-    // 전까지 대륙 구분 
-    queue<tuple<int,int,int>> Q1;
-    queue<tuple<int, int, int>> Q2;
-    int first = 1; 
-
-    int edge = 0;
-    for(int i = 0;i < num;i++) fill(vis[i],vis[i]+num,0);
-    for(int i =0;i < num;i++){
-        for(int j = 0;j < num;j++){
-            if(board[i][j] != 0 && vis[i][j] == 0){
-                vis[i][j] = 1;
-                Q1.push({i,j,continent[i][j]});
-            }
-            while(!Q1.empty()){
-                edge = 0;
-                tuple<int, int, int > cur = Q1.front(); Q1.pop();
-                for(int dir = 0;dir < 4;dir++){
-                    int nx = X + dx[dir];
-                    int ny = Y  +dy[dir];
-                    int curcon = CON;
-                    if(nx<0||nx>=num||ny<0||ny>=num) continue;
-                    int ncon = continent[nx][ny];
-                    if(vis[nx][ny] != 0) continue;
-                    if(edge && board[nx][ny] == 0) continue;
-                    if(board[nx][ny] == 0){
-                        edge = 1;
-                        Q2.push({X,Y,curcon});
-                        conNum[curcon]++;
-                    }else{
-                        vis[nx][ny] = 1;
-                        Q1.push({nx,ny,curcon});
-                    }
-                    
-                }
-            }
-        }
-    }
-    // while(!Q2.empty()){
-    //     cout << get<0> (Q2.front())<<','<<get<1>(Q2.front())<<','<<get<2>(Q2.front())<<'\n';
-    //     Q2.pop();
-    // }
-    // for(int i = 1;i <= 6 ;i++){
-    //     cout << conNum[i]<<'\n';
-    // }
     int min1 = 10000;
     int end1 = 0;
-    queue<tuple<int,int,int>> Q3;
+    // queue<tuple<int,int,int>> Q3;
     int rand = 1;
     while(!Q2.empty()){
         end1 = 0;
@@ -108,25 +60,25 @@ int main(void){
             fill(dist[i],dist[i]+num,-1);
         }
         for(int i = 0; i < contnum;i++){
-            Q3.push(Q2.front());Q2.pop();
+            Q.push(Q2.front());Q2.pop();
         }
-        while(!Q3.empty()){
-            tuple<int, int, int> cur = Q3.front(); Q3.pop();
+        while(!Q.empty()){
+            tuple<int, int, int> cur = Q.front(); Q.pop();
             if(!end1){
                 for(int dir = 0; dir < 4; dir++){
                     int nx = X + dx[dir];
                     int ny = Y + dy[dir];
                     if(nx<0||nx>=num||ny<0||ny>=num) continue;
                     if(dist[nx][ny] >= 0 ) continue;
-                    if(continent[nx][ny] != ini_rand && board[nx][ny] == 1){
+                    if(board[X][Y] != 1 && vis[nx][ny] == 1){
                         min1 = min(dist[X][Y] + 1,min1);
                         dist[nx][ny] = dist[X][Y] + 1;
                         end1 = 1;
                         break;
                     }
-                    if(continent[nx][ny] != ini_rand){
+                    if(board[nx][ny] != 1){
                         dist[nx][ny] = dist[X][Y] + 1;
-                        Q3.push({nx,ny,CON});
+                        Q.push({nx,ny,CON});
                     }
                 }
             }
