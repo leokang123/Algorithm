@@ -70,7 +70,7 @@ int main(void){
                     int ny = Y + dy[dir];
                     if(nx<0||nx>=num||ny<0||ny>=num) continue;
                     if(dist[nx][ny] >= 0 ) continue;
-                    if(board[X][Y] != 1 && vis[nx][ny] == 1){
+                    if(continent[nx][ny] != ini_rand && vis[nx][ny] == 1){
                         min1 = min(dist[X][Y] + 1,min1);
                         dist[nx][ny] = dist[X][Y] + 1;
                         end1 = 1;
@@ -86,5 +86,11 @@ int main(void){
     }
     if(min1 == 10000) cout << 0<<'\n';
     else cout << min1<<'\n';
+    // for(int i = 0;i < num;i++){
+    //     for(int j = 0;j < num;j++){
+    //         cout << dist[i][j]<<' ';
+    //     }
+    //     cout <<'\n';
+    // }
 
 }
