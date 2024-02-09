@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define MAX 9
+#define MAX 25
 int arr[MAX];
 bool isused[MAX];
 int N,M;
