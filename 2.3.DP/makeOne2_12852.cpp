@@ -2,7 +2,7 @@
 using namespace std;
 
 int memo[1000001];
-int extra[1000001];
+int extra[1000001]; // 경로 저장 
 
 int main (void) {
     ios::sync_with_stdio(false);

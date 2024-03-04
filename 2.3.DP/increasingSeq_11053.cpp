@@ -1,30 +1,27 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <math.h>
+#include <bits/stdc++.h> 
 using namespace std;
 
+int memo[1001];
+int arr[1001];
 
-int main(){
-    int n,m;
-    cin >> n;
-    int board[1001];
-    int dp[1001];
-    fill(dp,dp+1001,1);
-    m = 0;
-    for(int i=0;i<n;i++){
-        cin >> board[i];
+int main(void) {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int N; cin >> N;
+    int max = 0;
+    for(int i = 0 ; i < N ; i++) {
+        cin >> arr[i];
     }
-
-    for(int i=0;i<n;i++){
-        for(int j=0;j<i;j++){
-            if(board[i]<=board[j] || dp[i]>=dp[j]+1) continue;
-            dp[i]=dp[j]+1;
+    for(int i = 0 ; i < N ; i++) {
+        for(int j = i + 1; j < N; j++) {
+            if(arr[i] >= arr[j]) continue;
+            if(memo[j] < memo[i] + 1) memo[j] += 1;
         }
-        cout << dp[i] << '\n';
-        if (m<dp[i]) m =dp[i];
+        if(max < memo[i]) max = memo[i];
+
     }
-    cout << m;
-    return 0;
+    // for(int i = 0 ; i < N ; i++) cout << memo[i] << ' ';
+    // cout << '\n';
+    cout << max + 1<< '\n';
 }

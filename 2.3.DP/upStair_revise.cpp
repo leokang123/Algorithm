@@ -2,7 +2,6 @@
 using namespace std;
 
 int arr[301];
-int score[301];
 
 int main(void) {
     ios::sync_with_stdio(false);

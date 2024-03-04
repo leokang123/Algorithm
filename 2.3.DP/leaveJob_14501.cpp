@@ -23,6 +23,5 @@ int main(void) {
         if(i + skip <=  N && max < memo[i]) max = memo[i];
        
     }
-    // for(int i = 0 ; i < N ; i++) cout << memo[i] << ' ';
     cout << max << '\n';
 }

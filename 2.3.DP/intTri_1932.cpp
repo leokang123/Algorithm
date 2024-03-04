@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int memo[501];
-int arr[501];
+int memo[125251];
+int arr[125251];
 int main (void) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);

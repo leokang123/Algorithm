@@ -9,11 +9,9 @@ int main(void) {
 
     int N; cin>> N;
     int max1 = 0;
-    for(int i = 0 ; i < N; i++){
-        cin >> arr[i];
-        memo[i] = arr[i];
-    } 
+    for(int i = 0 ; i < N; i++) cin >> arr[i];
     for(int i = 0 ; i < N ;i++) {
+        memo[i] = arr[i];
         for(int j = 0 ; j < i ; j++) {
             if(arr[j] >= arr[i]) continue;
             memo[i] = max(memo[i], memo[j] + arr[i]);

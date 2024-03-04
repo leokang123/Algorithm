@@ -16,7 +16,7 @@ int main (void) {
     //     if(i == 0) continue;
     //     memo[i] += memo[i-1];
     // }
-
+    // 1-indexed 배열 쓰는게 훨~~씬 편함 
     for(int i = 1 ; i <= N ; i++) {
         int a ; cin >> a;
         memo[i] = memo[i-1] + a;
