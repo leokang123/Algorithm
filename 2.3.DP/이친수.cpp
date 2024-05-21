@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define MAX 92
-int check[MAX][2];
+// 먼저 범위를 생각하자 
+long long check[MAX][2];
 
 int main(void) {
     ios::sync_with_stdio(false);
