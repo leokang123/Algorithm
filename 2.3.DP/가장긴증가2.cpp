@@ -38,5 +38,7 @@ int main(void) {
         else v.push_back(a);
         // print();
     }
+    for(auto &i : v) cout << i << ' ' ; 
+    cout << '\n';
     cout << v.size() << '\n';
 }
