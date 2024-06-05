@@ -12,14 +12,14 @@ int main (void) {
     int k = 0;
     for(long long i = 2; i <= n; i++) {
         if (!notprime[i]) {
-            psum[k] = psum[k-1] + i;
             k++;
+            psum[k] = psum[k-1] + i;
             for (long long j = i*i; j <= n; j+=i) notprime[j] = 1;
         }
     }
     int cnt = 0;
     int left = 0, right = 1;
-    while (right < k) {
+    while (right <= k) {
         while (psum[right] - psum[left] >= n) {
             if (psum[right] - psum[left] == n) cnt++;
             left++;
