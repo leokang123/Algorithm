@@ -15,7 +15,7 @@ int main (void) {
         max1 = max(max1,i);
     }
     int m; cin >> m;
-    if(sum == m) {
+    if(sum <= m) {
         cout << max1 << '\n';
         return 0;
     }
