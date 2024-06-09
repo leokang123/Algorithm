@@ -17,7 +17,6 @@ int main (void) {
             if(interval[i] - interval[i-1] >= 120) cnt += (interval[i] - interval[i-1]) / 120;
         }
         if (1439 - interval[m-1] >= 120) cnt += (1439 - interval[m-1]) / 120;
-        cout << cnt << '\n';
         cnt >= 2 ? cout << "YES" : cout << "NO";
         cout << '\n';
     }
