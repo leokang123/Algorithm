@@ -17,7 +17,7 @@ int main (void) {
             else k--;
             j++;
         }
-        max1 = max(max1, num);
+        max1 = max(max1, num); 
         if (arr[i] % 2 == 1) k++;
         else num--;
     }
